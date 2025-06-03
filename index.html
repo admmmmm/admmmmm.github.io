@@ -1,32 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download APK</title>
+    <title>Wiscreen：您的智能护眼助手</title>
     <style>
+        :root {
+            --main-bg: #eafaf7;
+            --card-bg: #ffffffcc;
+            --main-color: #1abc9c;
+            --main-color-dark: #16a085;
+            --text-color: #222;
+            --sub-text: #555;
+            --border-radius: 22px;
+            --shadow: 0 4px 32px rgba(26,188,156,0.08);
+            --disclaimer-bg: #f8fdfa;
+            --disclaimer-border: #1abc9c;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "SF Pro Display", "Segoe UI", Arial, sans-serif;
+            background: var(--main-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 520px;
+            margin: 48px auto 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 32px 32px 32px;
+            backdrop-filter: blur(2px);
+        }
+        h1 {
+            color: var(--main-color);
+            font-size: 2.3em;
+            margin-bottom: 0.7em;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
+        h2 {
+            color: var(--main-color-dark);
+            margin-top: 2em;
+            font-size: 1.18em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        ul {
+            padding-left: 1.2em;
+            margin-top: 0.7em;
+            margin-bottom: 1.2em;
+        }
+        li {
+            margin-bottom: 0.7em;
+            line-height: 1.7;
+        }
+        p {
+            font-size: 1.08em;
+            line-height: 1.8;
+            color: var(--sub-text);
+            margin-bottom: 1.5em;
+            text-align: center;
+        }
         .download-btn {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 16px 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1abc9c 60%, #48e0c7 100%);
+            color: #fff;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 5px;
+            display: block;
+            font-size: 1.18em;
+            font-weight: 600;
+            border-radius: 14px;
             cursor: pointer;
             border: none;
+            margin: 32px 0 18px 0;
+            box-shadow: 0 2px 8px rgba(26,188,156,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.05em;
         }
-
-            .download-btn:hover {
-                background-color: #45a049;
+        .download-btn:hover {
+            background: linear-gradient(90deg, #16a085 60%, #1abc9c 100%);
+            box-shadow: 0 4px 16px rgba(26,188,156,0.13);
+        }
+        .contact {
+            margin-top: 18px;
+            font-size: 1em;
+            color: var(--sub-text);
+            text-align: center;
+        }
+        .contact a {
+            color: var(--main-color-dark);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--main-color-dark);
+            transition: color 0.2s;
+        }
+        .contact a:hover {
+            color: var(--main-color);
+        }
+        .disclaimer {
+            margin-top: 36px;
+            font-size: 0.98em;
+            color: #888;
+            border-left: 4px solid var(--disclaimer-border);
+            padding-left: 14px;
+            background: var(--disclaimer-bg);
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 6vw 18px 6vw;
+                margin: 0;
+                border-radius: 0;
             }
+            h1 {
+                font-size: 1.3em;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Download the APK</h1>
-    <a href="https://github.com/admmmmm/admmmmm.github.io/blob/master/Wiscreen_debug_1.apk" class="download-btn" download>
-        Click to Download APK
-    </a>
+    <div class="container">
+        <h1>Wiscreen：您的智能护眼助手，守护您的视觉健康</h1>
+        <p>
+            在数字时代，我们每天都离不开各种屏幕。<br>
+            <b>Wiscreen</b> 请允许我们帮助您养成健康用屏习惯，减轻视觉疲劳，让每一次屏幕使用都更安心。
+        </p>
+
+        <h2>主要功能</h2>
+        <ul>
+            <li><b>智能距离提醒：</b> 前置摄像头实时监测，距离过近时，系统会以温和的方式智能干预，帮助您下意识地调整到更健康的观看距离，支持个性化安全距离设置。</li>
+            <li><b>全方位护眼模式：</b> 一键开启护眼，后台守护持续保护双眼。</li>
+            <li><b>健康数据仪表盘：</b> 记录并展示用眼健康数据，图表回顾7天/30天健康报告。</li>
+            <li><b>个性化与易用性：</b> 简洁直观界面，中英文切换，柔和护眼色系。</li>
+        </ul>
+
+        <a href="https://github.com/admmmmm/admmmmm.github.io/raw/master/Wiscreen_debug_1.apk" class="download-btn" download>
+            立即下载 APK
+        </a>
+        <div class="contact">
+            开发者联系方式：<a href="mailto:adm143@126.com">adm143@126.com</a>
+        </div>
+
+        <div class="disclaimer">
+            <b>免责声明：</b><br>
+            Wiscreen 是一款辅助工具，旨在提醒用户保持健康的用屏习惯，不能替代专业的医疗建议。如有不适，请及时咨询眼科医生。
+        </div>
+    </div>
 </body>
 </html>
