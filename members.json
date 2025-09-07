@@ -1,0 +1,23 @@
+[
+    {
+        "name": "成员A",
+        "role": "role",
+        "bio": "bio",
+        "image": "images/ljs.jpeg",
+        "github": "https://github.com/你的GitHub用户名A"
+    },
+    {
+        "name": "成员B",
+        "role": "role",
+        "bio": "bio",
+        "image": "images/xpy.jpeg",
+        "github": "https://github.com/你的GitHub用户名B"
+    },
+    {
+        "name": "成员C",
+        "role": "role",
+        "bio": "bio",
+        "image": "images/adm.jpeg",
+        "github": "https://github.com/你的GitHub用户名C"
+    }
+]

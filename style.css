@@ -1,0 +1,285 @@
+/* 全局样式和字体设置 */
+:root {
+    --primary-color: #2c3e50;    /* 主色调，深蓝灰 */
+    --secondary-color: #3498db;  /* 辅助色，天蓝 */
+    --text-color: #333;          /* 主要文字颜色 */
+    --bg-color: #f4f7f9;         /* 背景色 */
+    --card-bg-color: #ffffff;    /* 卡片背景色 */
+    --border-radius: 8px;        /* 常用圆角 */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 微妙的阴影 */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    /* 平滑滚动效果，级别8 */
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏样式 (级别3) */
+.header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 15px;
+    transition: color 0.3s ease; /* 微动效，级别6 */
+}
+
+.nav-links li a:hover {
+    color: var(--secondary-color);
+}
+
+/* 通用部分样式 */
+.section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+/* 标题下划线装饰 */
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* --- 新的浮动成员标签样式 --- */
+
+.members-interactive-wrapper {
+    position: relative; /* 用于定位成员详细信息 */
+    display: flex; /* 让成员标签可以并排 */
+    justify-content: center; /* 居中显示成员标签 */
+    align-items: flex-start; /* 顶部对齐 */
+    gap: 50px; /* 标签之间的间距 */
+    min-height: 400px; /* 确保有足够空间显示信息 */
+    margin-top: 50px;
+    flex-wrap: wrap; /* 手机端换行 */
+}
+
+.member-label {
+    position: relative;
+    width: 180px; /* 默认宽度 */
+    height: 180px; /* 默认高度 */
+    border-radius: 50%;
+    overflow: hidden; /* 确保图片在圆形内 */
+    box-shadow: var(--box-shadow); /* 视觉层次 */
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; /* 微动效，级别6 */
+    border: 4px solid transparent; /* 默认透明边框 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* 防止缩小 */
+    margin-bottom: 20px; /* 手机端换行时的间距 */
+}
+
+.member-label img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 确保图片填充 */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 图片放大动效 */
+}
+
+/* 鼠标悬停时的效果：放大，边框高亮 */
+.member-label.hovered {
+    transform: scale(1.2); /* 放大，级别6 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--secondary-color); /* 边框高亮 */
+    z-index: 10; /* 悬停时置顶 */
+}
+
+.member-label.hovered img {
+    transform: scale(1.05); /* 图片内部微放大，增加细节 */
+}
+
+/* 成员详细信息显示区 */
+.member-detail-display {
+    position: absolute; /* 绝对定位 */
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 更明显的阴影 */
+    padding: 30px;
+    width: 70%; /* 占据大部分宽度 */
+    max-width: 600px;
+    top: 220px; /* 定位到标签下方 */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* 默认隐藏 */
+    visibility: hidden; /* 默认隐藏 */
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+    text-align: left;
+    min-height: 180px; /* 确保有一定高度 */
+}
+
+.member-detail-display.visible {
+    opacity: 1; /* 显示 */
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* 显示时回到正常位置 */
+}
+
+.member-detail-display h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.member-detail-display p {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.member-detail-display .github-link {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+/* 项目卡片样式 (保持不变或微调) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    margin-bottom: 15px;
+    min-height: 100px; /* 确保懒加载图片加载前有位置 */
+}
+
+/* 项目技术栈样式 */
+.project-tech-stack span {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 5px;
+}
+
+/* 链接样式 */
+a.github-link,
+a.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* 微动效，级别6 */
+}
+
+a.github-link:hover,
+a.project-link:hover {
+    background-color: #2980b9;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 响应式设计 (级别4) */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links li a {
+        padding: 5px 10px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .members-interactive-wrapper {
+        flex-direction: column; /* 在小屏幕上垂直排列 */
+        align-items: center;
+        gap: 30px;
+        min-height: auto; /* 高度自适应 */
+    }
+
+    .member-detail-display {
+        position: static; /* 小屏幕上改为静态定位 */
+        transform: none;
+        width: 90%;
+        margin-top: 30px;
+    }
+}
