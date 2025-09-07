@@ -1,23 +1,20 @@
 [
     {
-        "name": "成员A",
-        "role": "role",
+        "name": "刘建树",
         "bio": "bio",
         "image": "images/ljs.jpeg",
-        "github": "https://github.com/你的GitHub用户名A"
+        "github": "https://github.com/long-tree"
     },
     {
-        "name": "成员B",
-        "role": "role",
+        "name": "项芃奕",
         "bio": "bio",
         "image": "images/xpy.jpeg",
-        "github": "https://github.com/你的GitHub用户名B"
+        "github": "https://github.com/wsnc2333"
     },
     {
-        "name": "成员C",
-        "role": "role",
+        "name": "安德旻",
         "bio": "bio",
         "image": "images/adm.jpeg",
-        "github": "https://github.com/你的GitHub用户名C"
+        "github": "https://github.com/admmmmm"
     }
 ]

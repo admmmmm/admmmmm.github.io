@@ -1,12 +1,12 @@
 /* 全局样式和字体设置 */
 :root {
-    --primary-color: #2c3e50;    /* 主色调，深蓝灰 */
-    --secondary-color: #3498db;  /* 辅助色，天蓝 */
-    --text-color: #333;          /* 主要文字颜色 */
-    --bg-color: #f4f7f9;         /* 背景色 */
-    --card-bg-color: #ffffff;    /* 卡片背景色 */
-    --border-radius: 8px;        /* 常用圆角 */
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 微妙的阴影 */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --bg-color: #f4f7f9;
+    --card-bg-color: #ffffff;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -16,7 +16,6 @@ body {
     background-color: var(--bg-color);
     margin: 0;
     padding: 0;
-    /* 平滑滚动效果，级别8 */
     scroll-behavior: smooth;
 }
 
@@ -58,7 +57,7 @@ body {
     color: #fff;
     text-decoration: none;
     padding: 0 15px;
-    transition: color 0.3s ease; /* 微动效，级别6 */
+    transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
@@ -78,7 +77,7 @@ body {
     position: relative;
     display: inline-block;
 }
-/* 标题下划线装饰 */
+
 .section h2::after {
     content: '';
     position: absolute;
@@ -100,7 +99,11 @@ body {
     gap: 30px;
     margin-top: 50px;
     position: relative;
-    min-height: 450px; /* 确保有足够空间显示信息 */
+    min-height: 450px;
+    /* 增加一个 Flexbox 容器，以更好地控制内部元素 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .members-column {
@@ -108,69 +111,67 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 200px; /* 增加这个间距，让左右对齐更明显 */
 }
 
 .left-column {
-    align-items: flex-end; /* 让照片靠右对齐，靠近中心 */
+    align-items: flex-end;
 }
 
 .right-column {
-    align-items: flex-start; /* 让照片靠左对齐，靠近中心 */
+    align-items: flex-start;
 }
 
 .member-label {
     position: relative;
-    width: 160px; /* 默认宽度 */
-    height: 160px; /* 默认高度 */
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    overflow: hidden; /* 确保图片在圆形内 */
-    box-shadow: var(--box-shadow); /* 视觉层次 */
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; /* 微动效，级别6 */
-    border: 4px solid transparent; /* 默认透明边框 */
-    flex-shrink: 0; /* 防止缩小 */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    border: 4px solid transparent;
+    flex-shrink: 0;
 }
 
 .member-label img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 确保图片填充 */
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 图片放大动效 */
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 鼠标悬停时的效果：放大，边框高亮 */
 .member-label.hovered {
-    transform: scale(1.2); /* 放大，级别6 */
+    transform: scale(1.2);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-color: var(--secondary-color); /* 边框高亮 */
-    z-index: 10; /* 悬停时置顶 */
+    border-color: var(--secondary-color);
+    z-index: 10;
 }
 
 .member-label.hovered img {
-    transform: scale(1.05); /* 图片内部微放大，增加细节 */
+    transform: scale(1.05);
 }
 
-/* 成员详细信息显示区 (浮动窗口) */
 .member-detail-display {
     background-color: var(--card-bg-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 更明显的阴影 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     padding: 30px;
     width: 60%;
-    max-width: 500px;
-    opacity: 0; /* 默认隐藏 */
-    visibility: hidden; /* 默认隐藏 */
+    max-width: 2500px;
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     text-align: left;
-    min-height: 180px;
+    min-height:430px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 垂直居中内容 */
+    justify-content: center;
 }
 
 .member-detail-display.visible {
-    opacity: 1; /* 显示 */
+    opacity: 1;
     visibility: visible;
 }
 
@@ -187,12 +188,6 @@ body {
     font-size: 1.1rem;
     text-align: center;
 }
-
-.member-detail-display .github-link {
-    margin: 20px auto 0; /* 居中显示链接 */
-    display: block;
-}
-
 
 /* 项目卡片样式 (保持不变或微调) */
 .projects-grid {
@@ -222,7 +217,7 @@ body {
     border-radius: var(--border-radius);
     object-fit: cover;
     margin-bottom: 15px;
-    min-height: 100px; /* 确保懒加载图片加载前有位置 */
+    min-height: 100px;
 }
 
 /* 项目技术栈样式 */
@@ -237,7 +232,6 @@ body {
 }
 
 /* 链接样式 */
-a.github-link,
 a.project-link {
     display: inline-block;
     margin-top: 15px;
@@ -246,10 +240,9 @@ a.project-link {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* 微动效，级别6 */
+    transition: background-color 0.3s ease;
 }
 
-a.github-link:hover,
 a.project-link:hover {
     background-color: #2980b9;
 }
@@ -267,31 +260,64 @@ a.project-link:hover {
     .nav {
         flex-direction: column;
     }
+
     .nav-links {
         margin-top: 10px;
     }
+
     .nav-links li a {
         padding: 5px 10px;
     }
+
     .section {
         padding: 40px 0;
     }
+
     .members-interactive-wrapper {
-        flex-direction: column; /* 在小屏幕上垂直排列 */
+        flex-direction: column;
         align-items: center;
         gap: 30px;
-        min-height: auto; /* 高度自适应 */
+        min-height: auto;
     }
+
     .members-column {
-        flex-direction: row; /* 在小屏幕上，队员照片水平排列 */
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 30px;
     }
+
     .left-column, .right-column {
         align-items: center;
     }
+
     .member-detail-display {
         width: 90%;
         margin-top: 30px;
     }
+    /* 新增的视频部分样式 */
+.video-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 保持16:9的宽高比 */
+    height: 0;
+    overflow: hidden;
+    max-width: 12000px; /* 调整这个值，让视频变大 */
+    margin: 40px auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* 保持100% */
+    height: 100%; /* 保持100% */
+}
 }
