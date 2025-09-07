@@ -91,34 +91,45 @@ body {
     border-radius: 2px;
 }
 
-/* --- 新的浮动成员标签样式 --- */
+/* --- 新的成员交互式布局样式 --- */
 
 .members-interactive-wrapper {
-    position: relative; /* 用于定位成员详细信息 */
-    display: flex; /* 让成员标签可以并排 */
-    justify-content: center; /* 居中显示成员标签 */
-    align-items: flex-start; /* 顶部对齐 */
-    gap: 50px; /* 标签之间的间距 */
-    min-height: 400px; /* 确保有足够空间显示信息 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
     margin-top: 50px;
-    flex-wrap: wrap; /* 手机端换行 */
+    position: relative;
+    min-height: 450px; /* 确保有足够空间显示信息 */
+}
+
+.members-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.left-column {
+    align-items: flex-end; /* 让照片靠右对齐，靠近中心 */
+}
+
+.right-column {
+    align-items: flex-start; /* 让照片靠左对齐，靠近中心 */
 }
 
 .member-label {
     position: relative;
-    width: 180px; /* 默认宽度 */
-    height: 180px; /* 默认高度 */
+    width: 160px; /* 默认宽度 */
+    height: 160px; /* 默认高度 */
     border-radius: 50%;
     overflow: hidden; /* 确保图片在圆形内 */
     box-shadow: var(--box-shadow); /* 视觉层次 */
     cursor: pointer;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; /* 微动效，级别6 */
     border: 4px solid transparent; /* 默认透明边框 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-shrink: 0; /* 防止缩小 */
-    margin-bottom: 20px; /* 手机端换行时的间距 */
 }
 
 .member-label img {
@@ -140,29 +151,27 @@ body {
     transform: scale(1.05); /* 图片内部微放大，增加细节 */
 }
 
-/* 成员详细信息显示区 */
+/* 成员详细信息显示区 (浮动窗口) */
 .member-detail-display {
-    position: absolute; /* 绝对定位 */
     background-color: var(--card-bg-color);
     border-radius: var(--border-radius);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 更明显的阴影 */
     padding: 30px;
-    width: 70%; /* 占据大部分宽度 */
-    max-width: 600px;
-    top: 220px; /* 定位到标签下方 */
-    left: 50%;
-    transform: translateX(-50%);
+    width: 60%;
+    max-width: 500px;
     opacity: 0; /* 默认隐藏 */
     visibility: hidden; /* 默认隐藏 */
-    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
     text-align: left;
-    min-height: 180px; /* 确保有一定高度 */
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直居中内容 */
 }
 
 .member-detail-display.visible {
     opacity: 1; /* 显示 */
     visibility: visible;
-    transform: translateX(-50%) translateY(0); /* 显示时回到正常位置 */
 }
 
 .member-detail-display h3 {
@@ -170,16 +179,18 @@ body {
     font-size: 1.8rem;
     margin-top: 0;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .member-detail-display p {
     margin-bottom: 8px;
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .member-detail-display .github-link {
-    margin-top: 20px;
-    display: inline-block;
+    margin: 20px auto 0; /* 居中显示链接 */
+    display: block;
 }
 
 
@@ -256,29 +267,30 @@ a.project-link:hover {
     .nav {
         flex-direction: column;
     }
-
     .nav-links {
         margin-top: 10px;
     }
-
     .nav-links li a {
         padding: 5px 10px;
     }
-
     .section {
         padding: 40px 0;
     }
-
     .members-interactive-wrapper {
         flex-direction: column; /* 在小屏幕上垂直排列 */
         align-items: center;
         gap: 30px;
         min-height: auto; /* 高度自适应 */
     }
-
+    .members-column {
+        flex-direction: row; /* 在小屏幕上，队员照片水平排列 */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .left-column, .right-column {
+        align-items: center;
+    }
     .member-detail-display {
-        position: static; /* 小屏幕上改为静态定位 */
-        transform: none;
         width: 90%;
         margin-top: 30px;
     }
