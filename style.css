@@ -320,4 +320,33 @@ a.project-link:hover {
     width: 100%; /* 保持100% */
     height: 100%; /* 保持100% */
 }
+
+/* 新增成员介绍样式 */
+.additional-bio {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    margin-top: 50px; /* 与上方主成员区块保持间距 */
+    text-align: left; /* 文本左对齐 */
+    max-width: 300px; /* 限制最大宽度，使其看起来小一点 */
+    margin-left: 0; /* 确保靠左对齐 */
+    margin-right: auto;
+}
+
+.additional-bio h3 {
+    text-align: left; /* 标题也左对齐 */
+    margin-bottom: 15px;
+}
+
+/* 小屏幕下的响应式调整 */
+@media (max-width: 768px) {
+    .additional-bio {
+        margin: 30px auto; /* 手机端居中显示 */
+        text-align: center;
+    }
+    .additional-bio h3 {
+        text-align: center;
+    }
+}
 }

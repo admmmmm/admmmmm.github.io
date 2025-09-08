@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to set the detail display to the default message
     const showDefaultMessage = () => {
         detailDisplay.innerHTML = `
-            <p>请将鼠标悬停在队员头像上</p>
+            <h3>请将鼠标悬停在队员头像上</h3>
             <p>来查看他们的信息。</p>
             <p>点击队员头像</p>
             <p>跳转到他们的GitHub主页</p>
@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
             rightColumn.innerHTML = '';
 
             members.forEach((member, index) => {
+                // 如果成员没有图片路径，则跳过创建头像
+                if (member.image === '/') {
+                    return; 
+                }
+
                 const memberLabel = document.createElement('div');
                 memberLabel.className = 'member-label';
                 memberLabel.innerHTML = `<img src="${member.image}" alt="${member.name}的Q版画像">`;
@@ -54,37 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     showDefaultMessage();
                 });
 
-                // 点击头像: 跳转到 GitHub 主页
+                // 点击头像: 跳转到 GitHub 主页（如果链接存在）
                 memberLabel.addEventListener('click', () => {
-                    window.open(member.github, '_blank');
+                    if (member.github && member.github !== '/') {
+                        window.open(member.github, '_blank');
+                    }
                 });
             });
+
+            // 在主成员区块的末尾，添加额外的介绍
+            const additionalMember = members.find(m => m.image === '/');
+            if (additionalMember) {
+                const additionalBio = document.createElement('div');
+                additionalBio.className = 'additional-bio';
+                additionalBio.innerHTML = `
+                    <h3>${additionalMember.name}</h3>
+                    <p>${additionalMember.bio}</p>
+                `;
+                // 将次要成员介绍添加到 members-interactive-wrapper 的下方
+                document.getElementById('members').querySelector('.container').appendChild(additionalBio);
+            }
 
             // 初始状态: 页面加载时显示默认提示
             showDefaultMessage();
         })
         .catch(error => console.error('加载成员信息失败:', error));
-
-    // 加载并渲染项目作品 (保持不变)
-    fetch('projects.json')
-        .then(response => response.json())
-        .then(projects => {
-            const projectsContainer = document.getElementById('projects-container');
-            projectsContainer.innerHTML = '';
-
-            projects.forEach(project => {
-                const techStackHtml = project.techStack.map(tech => `<span>${tech}</span>`).join('');
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
-                projectCard.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}截图" loading="lazy">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <div class="project-tech-stack">${techStackHtml}</div>
-                    <a href="${project.link}" class="project-link" target="_blank">查看项目</a>
-                `;
-                projectsContainer.appendChild(projectCard);
-            });
-        })
-        .catch(error => console.error('加载项目信息失败:', error));
 });
